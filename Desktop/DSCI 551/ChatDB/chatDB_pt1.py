@@ -1,28 +1,27 @@
 import streamlit as st
 import mysql.connector
 from pymongo import MongoClient
-import json
 import google.generativeai as genai
 import re
 
-# ──────────────── Gemini Setup ────────────────
-genai.configure(api_key="AIzaSyCjFhVxNVRXCYy29WvPI0VruJl-tst9rek")  # Replace with your actual API key
+# Gemini Setup
+genai.configure(api_key="AIzaSyCjFhVxNVRXCYy29WvPI0VruJl-tst9rek")  
 model = genai.GenerativeModel(model_name="models/gemini-1.5-pro-002")
 
-# ──────────────── MySQL Connection ────────────────
+#MySQL Setup
 def get_connection(db_name=None):
     return mysql.connector.connect(
         host="localhost",
-        user="root",          # Update with your MySQL username
-        password="password",      # Update with your MySQL password
+        user="root",          
+        password="password",      
         database=db_name if db_name else None
     )
 
 def get_mongo_client():
     return MongoClient("mongodb://127.0.0.1:27017")
 
-# ──────────────── Streamlit UI ────────────────
-# ──────────────── Streamlit UI ────────────────
+
+#Streamlit UI 
 st.markdown("""
     <h1 style='text-align: center; color: #4CAF50;'>💬 ChatDB</h1>
     <h4 style='text-align: center; color: gray;'>Powered by Gemini 1.5 Pro · MySQL + MongoDB</h4>
@@ -35,7 +34,7 @@ if "current_db" not in st.session_state:
     st.session_state.current_db = None
 
 if "db_type" not in st.session_state:
-    st.session_state.db_type = "mysql"  # default
+    st.session_state.db_type = "mysql"  
 
 query = st.text_area("Enter your query:")
 
@@ -50,14 +49,13 @@ if st.button("Run Query"):
     else:
         st.session_state.db_type = detect_db_type(query)
         try:
-            # Prompt to Gemini
             if st.session_state.db_type == "mongodb":
                 prompt = f"Convert the following natural language request into a MongoDB Python (pymongo) expression only. Do not include explanations, comments, or shell syntax like 'use db':\n{query}"
             else:
                 prompt = f"Convert the following natural language request into a MySQL query:\n{query}"
             response = model.generate_content(prompt)
 
-            # Clean the response (remove markdown like ```sql, ```javascript, etc.)
+            # Cleaning the response from the AI  (remove markdown like ```sql, ```javascript, etc.)
             cleaned_text = re.sub(r"^```(?:\w+)?\s*|```$", "", response.text.strip(), flags=re.MULTILINE).strip()
 
             if st.session_state.db_type == "mongodb":
@@ -89,14 +87,12 @@ if st.button("Run Query"):
 
             if st.session_state.db_type == "mongodb":
                 client = get_mongo_client()
-                mongo_query = mongo_query  # use the previously defined mongo_query
+                mongo_query = mongo_query  
                 st.code(mongo_query, language="json")
                 local_env = {"client": client, "MongoClient": MongoClient}
                 try:
-                    # Try eval
                     result = eval(mongo_query, local_env)
                 except SyntaxError:
-                    # Fallback to exec for multi-line statements or definitions
                     exec(mongo_query, local_env)
                     result = local_env.get("result")
                 if hasattr(result, '__iter__') and not isinstance(result, (str, bytes, dict)):
@@ -108,7 +104,7 @@ if st.button("Run Query"):
 
             st.code(sql_query, language="sql")
 
-            # Execute the query
+
             conn = get_connection(st.session_state.current_db)
             cursor = conn.cursor()
 

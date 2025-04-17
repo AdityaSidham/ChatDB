@@ -1,0 +1,151 @@
+grade_id,student_id,course,grade,semester
+1,28,Microbiology,C,Fall 2023
+2,33,World History,A,Fall 2023
+3,32,Marketing,D,Spring 2024
+4,21,Data Structures,B,Spring 2023
+5,18,Marketing,F,Spring 2023
+6,18,Data Structures,A,Fall 2022
+7,49,Microbiology,C,Spring 2023
+8,7,Calculus,B,Fall 2023
+9,2,Calculus,B,Fall 2022
+10,35,World History,F,Spring 2024
+11,30,Data Structures,B,Fall 2023
+12,3,Microbiology,A,Fall 2023
+13,12,World History,C,Fall 2022
+14,42,World History,F,Fall 2023
+15,32,Microbiology,A,Fall 2022
+16,17,Data Structures,C,Fall 2023
+17,34,Microbiology,A,Spring 2023
+18,46,World History,C,Fall 2023
+19,41,Data Structures,B,Spring 2024
+20,27,Data Structures,C,Spring 2023
+21,27,Marketing,F,Spring 2024
+22,24,World History,C,Fall 2022
+23,16,Calculus,A,Fall 2022
+24,13,Marketing,D,Spring 2023
+25,19,Data Structures,D,Spring 2024
+26,45,Marketing,F,Spring 2023
+27,44,Microbiology,B,Spring 2024
+28,13,Microbiology,F,Spring 2023
+29,29,Microbiology,C,Fall 2023
+30,25,Data Structures,B,Spring 2023
+31,13,World History,D,Spring 2024
+32,45,Calculus,A,Fall 2022
+33,36,Microbiology,C,Spring 2023
+34,48,World History,C,Spring 2023
+35,1,Marketing,D,Fall 2023
+36,25,Marketing,B,Spring 2024
+37,12,Microbiology,C,Fall 2022
+38,40,Data Structures,B,Spring 2024
+39,5,World History,B,Spring 2024
+40,44,Marketing,F,Fall 2023
+41,36,Data Structures,D,Spring 2024
+42,29,Data Structures,A,Spring 2023
+43,30,World History,F,Spring 2024
+44,28,Marketing,C,Spring 2024
+45,8,Calculus,B,Fall 2023
+46,48,Microbiology,B,Spring 2024
+47,12,World History,F,Fall 2023
+48,36,Microbiology,B,Spring 2024
+49,40,Microbiology,C,Fall 2022
+50,31,Data Structures,B,Spring 2023
+51,23,Marketing,B,Fall 2023
+52,2,World History,D,Spring 2023
+53,14,Calculus,B,Fall 2023
+54,5,Calculus,C,Spring 2023
+55,39,Data Structures,B,Spring 2023
+56,8,Data Structures,C,Fall 2023
+57,5,Calculus,D,Spring 2024
+58,30,Data Structures,A,Fall 2023
+59,36,Data Structures,C,Spring 2023
+60,41,Marketing,D,Spring 2023
+61,21,Calculus,F,Spring 2024
+62,45,Microbiology,B,Fall 2022
+63,3,Calculus,F,Spring 2023
+64,4,Marketing,B,Fall 2022
+65,27,Microbiology,D,Spring 2024
+66,6,Microbiology,F,Spring 2023
+67,26,Marketing,C,Spring 2023
+68,4,Calculus,C,Spring 2024
+69,1,Marketing,F,Fall 2022
+70,30,Marketing,D,Spring 2023
+71,22,World History,B,Spring 2024
+72,31,World History,C,Fall 2023
+73,27,World History,F,Fall 2022
+74,15,Data Structures,B,Fall 2023
+75,35,Marketing,A,Spring 2023
+76,46,World History,C,Spring 2023
+77,41,Microbiology,B,Fall 2023
+78,9,Microbiology,C,Fall 2023
+79,27,Microbiology,D,Spring 2024
+80,47,Data Structures,D,Spring 2024
+81,23,World History,B,Spring 2024
+82,26,Marketing,D,Fall 2023
+83,26,Data Structures,B,Spring 2024
+84,38,Data Structures,D,Spring 2023
+85,28,Data Structures,C,Spring 2023
+86,2,World History,C,Fall 2022
+87,34,Microbiology,A,Spring 2023
+88,32,Microbiology,F,Spring 2024
+89,40,Calculus,A,Spring 2024
+90,47,Data Structures,A,Spring 2024
+91,27,Marketing,F,Fall 2022
+92,5,Marketing,D,Spring 2023
+93,10,World History,A,Spring 2024
+94,27,World History,F,Spring 2023
+95,35,World History,C,Spring 2023
+96,8,Marketing,F,Spring 2024
+97,50,Microbiology,B,Spring 2023
+98,9,Microbiology,C,Fall 2023
+99,50,World History,F,Spring 2023
+100,32,Marketing,C,Spring 2024
+101,48,World History,D,Spring 2023
+102,39,Marketing,B,Fall 2023
+103,28,World History,D,Spring 2023
+104,17,World History,F,Spring 2023
+105,8,Calculus,B,Spring 2024
+106,23,World History,C,Spring 2023
+107,35,Marketing,A,Fall 2022
+108,40,Microbiology,A,Spring 2023
+109,19,Marketing,B,Spring 2024
+110,30,Marketing,A,Fall 2022
+111,29,Data Structures,B,Fall 2022
+112,4,Microbiology,D,Fall 2023
+113,21,Marketing,A,Spring 2023
+114,19,Marketing,B,Fall 2022
+115,28,World History,C,Spring 2024
+116,45,Marketing,A,Fall 2022
+117,2,World History,A,Spring 2023
+118,13,Data Structures,F,Fall 2022
+119,44,Data Structures,A,Spring 2023
+120,48,Calculus,F,Fall 2023
+121,2,World History,C,Fall 2023
+122,34,World History,C,Spring 2024
+123,12,World History,F,Spring 2023
+124,2,World History,F,Fall 2022
+125,31,Marketing,B,Spring 2024
+126,27,Calculus,F,Spring 2023
+127,39,Marketing,A,Spring 2024
+128,6,Data Structures,D,Fall 2022
+129,46,Marketing,C,Spring 2023
+130,50,World History,D,Spring 2024
+131,2,Data Structures,D,Spring 2023
+132,32,Data Structures,D,Spring 2023
+133,33,Calculus,D,Spring 2023
+134,21,Data Structures,C,Spring 2023
+135,28,Marketing,D,Spring 2023
+136,26,Calculus,C,Fall 2022
+137,39,Data Structures,D,Spring 2023
+138,40,Microbiology,B,Fall 2023
+139,20,World History,F,Fall 2022
+140,42,Marketing,F,Spring 2023
+141,50,Calculus,B,Spring 2023
+142,17,World History,C,Fall 2022
+143,1,World History,D,Fall 2023
+144,50,Calculus,B,Fall 2023
+145,13,Microbiology,D,Fall 2023
+146,7,World History,F,Spring 2024
+147,20,World History,D,Fall 2022
+148,29,Marketing,C,Spring 2024
+149,17,Microbiology,C,Fall 2022
+150,21,Calculus,C,Fall 2023
