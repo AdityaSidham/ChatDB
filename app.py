@@ -3,10 +3,10 @@ import pandas as pd
 import json
 import tempfile
 import os
+import mysql.connector
 from db.mysql_handler import load_csv_to_mysql, run_mysql_query
 from db.mongo_handler import load_json_to_mongo, run_mongo_query
 from llm.gemini_handler import nl_to_sql, nl_to_mongo
-import mysql.connector
 
 st.set_page_config(page_title="ChatDB", layout="wide")
 
@@ -33,6 +33,7 @@ with upload_tab:
             st.write("Preview:", df.head())
             load_csv_to_mysql(temp_path, base_name)
             st.session_state["current_db"] = base_name.lower()
+            st.session_state["current_table"] = base_name.lower()
             st.success("📊 Data loaded into MySQL!")
 
         elif filename.endswith(".json") and db_choice == "MongoDB":
@@ -64,11 +65,13 @@ with explore_tab:
             tables = [row[0] for row in cursor.fetchall()]
             table = st.selectbox("Select a table", tables)
 
-            # Get columns
+            # Get table schema
             cursor.execute(f"DESCRIBE `{table}`")
             schema = cursor.fetchall()
+            schema_df = pd.DataFrame(schema, columns=["Field", "Type", "Null", "Key", "Default", "Extra"])
             st.write("**📐 Table Schema:**")
-            st.table(schema)
+            st.dataframe(schema_df)
+
 
             # Get sample rows
             cursor.execute(f"SELECT * FROM `{table}` LIMIT 5")
@@ -95,11 +98,16 @@ with query_tab:
                 if db_option == "MySQL":
                     sql_query = nl_to_sql(query)
                     db = st.session_state.get("current_db", "ecommerce")
+                    st.code(sql_query, language='sql')
                     result = run_mysql_query(sql_query, db_name=db)
                 else:
                     mongo_query = nl_to_mongo(query)
                     result = run_mongo_query(mongo_query)
                 st.success("Query executed successfully!")
-                st.write(result)
+                if isinstance(result, list):
+                    st.dataframe(result)  # Shows results in a clean table
+                else:
+                    st.write(result)
+
             except Exception as e:
                 st.error(f"Error: {e}")
