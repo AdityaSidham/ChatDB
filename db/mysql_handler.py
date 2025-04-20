@@ -3,14 +3,14 @@ import mysql.connector
 import os
 
 def load_csv_to_mysql(csv_path, base_name):
-    db_name = base_name.lower()
+    db_name = "chatdb"  # unified database for all tables
     table_name = base_name.lower()
 
-    # Step 1: Connect to MySQL root to create DB
+    # Step 1: Connect to MySQL root to create shared DB
     root_conn = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="12345",               # your actual password here
+        password="12345",
         allow_local_infile=True
     )
     root_cursor = root_conn.cursor()
@@ -18,7 +18,7 @@ def load_csv_to_mysql(csv_path, base_name):
     root_cursor.close()
     root_conn.close()
 
-    # Step 2: Reconnect to the new database
+    # Step 2: Reconnect to the shared database
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
@@ -42,16 +42,15 @@ def load_csv_to_mysql(csv_path, base_name):
         INTO TABLE `{table_name}`
         FIELDS TERMINATED BY ',' 
         OPTIONALLY ENCLOSED BY '"'
-        LINES TERMINATED BY '\\n'
+        LINES TERMINATED BY '\n'
         IGNORE 1 ROWS
     """)
     conn.commit()
     cursor.close()
     conn.close()
 
-# Note: This assumes the same DB name will be reused in run_mysql_query
-# You can enhance this by storing db_name in session state
-def run_mysql_query(sql, db_name="ecommerce"):
+def run_mysql_query(sql):
+    db_name = "chatdb"
     conn = mysql.connector.connect(
         host="localhost",
         user="root",
@@ -62,7 +61,9 @@ def run_mysql_query(sql, db_name="ecommerce"):
     cursor = conn.cursor()
     cursor.execute(sql)
     if cursor.with_rows:
-        result = cursor.fetchall()
+        rows = cursor.fetchall()
+        col_names = [desc[0] for desc in cursor.description]
+        result = [dict(zip(col_names, row)) for row in rows]
     else:
         result = "Query executed successfully"
     cursor.close()
